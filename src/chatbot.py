@@ -216,6 +216,7 @@ if __name__ ==  "__main__":
     for t in entities_list:
         vectorize_data(t, embeddings_model, graph_config['url'], graph_config['username'], credentials['neo4j_password'])
 
+    # Define entity and relation types to create the prompt
     entity_types = {
     "product": "Item detailed type, for example 'high waist pants', 'outdoor plant pot', 'chef kitchen knife'",
     "category": "Item category, for example 'home decoration', 'women clothing', 'office supply'",
@@ -244,7 +245,7 @@ if __name__ ==  "__main__":
         "age_group": "isFor"
     }
 
-    # Define tools
+    # Define tools for langchain agent
     tools_list = {"query_db": query_db,
                     "similarity_search": similarity_search
                     }  
