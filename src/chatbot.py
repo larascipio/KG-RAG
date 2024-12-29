@@ -3,22 +3,15 @@ import json
 import os
 from langchain_community.graphs import Neo4jGraph
 from dotenv import load_dotenv
-from langchain.agents import Tool
 from langchain_openai import (AzureOpenAIEmbeddings,
                                AzureChatOpenAI)
-from langchain.agents import (AgentExecutor, 
-                              create_tool_calling_agent)
-from langchain_core.messages import HumanMessage
-from langchain.prompts import ChatPromptTemplate
 
 from langchain_community.vectorstores import Neo4jVector
-from langchain import hub
 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import tool
 
 
-# ------------------------- DATA PROCESSING -------------------------
 def load_data(file_path: str):
     """
     Load JSON data from a file and return as a DataFrame and dictionary.
@@ -98,6 +91,7 @@ def vectorize_data(entity_type, embeddings_model, url, username, password):
         text_node_properties=['value'],
         embedding_node_property='embedding'
     )
+
 def create_embedding(text):
     """
     Create an embedding for a given text with Azure Open AI.
@@ -200,26 +194,27 @@ if __name__ ==  "__main__":
     graph = connect_neo4j(**graph_config)
 
     # Import data into neo4j (only do this once)
-    # import_data(json_data, graph)
+    import_data(json_data, graph)
 
     # Get all entities that should be embedded 
     entities_list = df['entity_type'].unique()
     embeddings_model = "text-embedding-3-large"
 
 # This method takes text from our database, calculates embeddings and stores them back in the database.
-#     vector_index = Neo4jVector.from_existing_graph(
-#     AzureOpenAIEmbeddings(model=embeddings_model),
-#     url=graph_config['url'],
-#     username=graph_config['username'],
-#     password=credentials['neo4j_password'],
-#     index_name='products',
-#     node_label="Product",
-#     text_node_properties=['name', 'title'],
-#     embedding_node_property='embedding',
-# )
+# You only need to run this once.
+    vector_index = Neo4jVector.from_existing_graph(
+    AzureOpenAIEmbeddings(model=embeddings_model),
+    url=graph_config['url'],
+    username=graph_config['username'],
+    password=credentials['neo4j_password'],
+    index_name='products',
+    node_label="Product",
+    text_node_properties=['name', 'title'],
+    embedding_node_property='embedding',
+)
  
-#     for t in entities_list:
-#         vectorize_data(t, embeddings_model, graph_config['url'], graph_config['username'], credentials['neo4j_password'])
+    for t in entities_list:
+        vectorize_data(t, embeddings_model, graph_config['url'], graph_config['username'], credentials['neo4j_password'])
 
     entity_types = {
     "product": "Item detailed type, for example 'high waist pants', 'outdoor plant pot', 'chef kitchen knife'",
