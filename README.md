@@ -83,17 +83,16 @@ Weaviate, Neo4j, Langchain, Langflow, Huggingface, LLMSherpa
 ## Context on Python files
 KG-Creation_V2:
 
-Needs Neo4j desktop for it to work
-Currently uses LLMSherpa to read the pdf and HuggingFace for embeddings but can be changed to use other llms and pdf parsers
+The script needs a database running on Neo4j desktop to work. It currently uses LLMSherpa to parse the pdf and HuggingFace for vector embeddings. These can be changed to use other llms and pdf parsers for better results. 
 
-For LLM Sherpa: Install docker and follow steps under 'Installation Steps' in https://github.com/nlmatics/nlm-ingestor, once set-up, make sure to run the docker container when parsing pdfs
+To use LLM Sherpa: Install docker and follow steps under 'Installation Steps' in https://github.com/nlmatics/nlm-ingestor, once set-up, make sure to run the docker container when parsing pdfs. This procedure sets up a container in which the pdfparser is run.
 
-Each part only has to be run once, still has to be changed to functions for easier calling of an individual part
-Part 1: Defines functions to initialize Neo4j schema and to ingest a document into the database
-Part 2: Parses document(s) and ingests it to neo4j
-Part 3: Embeds the chunks and uploads them to database
-Part 4: Calculates chunk similarities and creates links between them in neo4j
+Each part only has to be run once, the script still has to be changed to put each seperate part in a function for easier calling of an individual part, for now it can be run in its entirety to create a KG from a number of pdf files. Part 4 can be skipped to allow for other ways of linking the chunks, based on an entities and relations extraction, for example.
+- Part 1: Defines functions to initialize the Neo4j schema and to ingest a document into the database
+- Part 2: Parses document(s) and ingests the chunks, sections, etc. to neo4j
+- Part 3: Embeds the chunks and uploads the embeddings to the database
+- Part 4: Calculates chunk similarities and creates links between the chunks in neo4j based on the similarities
 
-chatbot.py
+chatbot.py:
 
-This script interacts with a Neo4j database using Langchain and Azure OpenAI. It is based on the example from the OpenAI Cookbook ([link](https://cookbook.openai.com/examples/rag_with_graph_db)), but has been updated to work with the latest version of Langchain. The data utilized in this script is stored in the `/data` directory, matching the dataset from the original cookbook example.
+This script interacts with a Neo4j database using Langchain and Azure OpenAI. It is based on the example from the OpenAI Cookbook ([link](https://cookbook.openai.com/examples/rag_with_graph_db)), but has been updated to work with the latest version of Langchain. The data utilized in this script is stored in the `/data` directory, matching the dataset from the original cookbook example
