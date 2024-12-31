@@ -5,9 +5,7 @@ import hashlib
 import os
 import glob
 from datetime import datetime
-import time
 import csv
-import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity 
 import matplotlib.pyplot as plt
 from langchain_huggingface import HuggingFaceEmbeddings
