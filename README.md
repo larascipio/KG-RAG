@@ -39,8 +39,7 @@ This project focuses on developing Knowledge Graphs (KGs) for use in Retrieval-A
      - **Password** (the password you set during database creation).  
 
 6. **Retrieve an LLM API Key**  
-   - If using **OpenAI**:
-     - Log in or sign up at OpenAI and retrieve your API key from the [API Key Page](https://platform.openai.com/account/api-keys).  
+   - Through AzureOpenAI (this is what chatbot.py uses) 
    - Alternatively, you can use a free API key from services like [HuggingFace](https://huggingface.co/inference-api).
 
 7. **Create a `.env` File**  
@@ -95,6 +94,6 @@ Part 2: Parses document(s) and ingests it to neo4j
 Part 3: Embeds the chunks and uploads them to database
 Part 4: Calculates chunk similarities and creates links between them in neo4j
 
-# chatbot.py
+chatbot.py
 
 This script interacts with a Neo4j database using Langchain and Azure OpenAI. It is based on the example from the OpenAI Cookbook ([link](https://cookbook.openai.com/examples/rag_with_graph_db)), but has been updated to work with the latest version of Langchain. The data utilized in this script is stored in the `/data` directory, matching the dataset from the original cookbook example.
