@@ -99,7 +99,8 @@ This script interacts with a Neo4j database using Langchain and Azure OpenAI. It
 
 ## BERTopic
 1. Install the **BERTopic package**
-The official BERTopic package is required to run the BERTopic file. The package can be installed by running: 
+The official BERTopic package is required to run the BERTopic file. The package can be installed by running:
+
    ```bash
    pip install bertopic
    ```
@@ -113,6 +114,7 @@ Currently, installing the bertopic package does not include all necessary depend
    pip install nbformat
    pip install matplotlib
    ```
+
 The recommended practice is to install these packages separately, since a single line install was found to lead to issues in one or more packages.
 
 2. Estimating the **BERTopic model**
