@@ -120,7 +120,7 @@ The recommended practice is to install these packages separately, since a single
 2. **Estimating the BERTopic model**  
 To estimate the BERTopic model, the original author's code has been adjusted to cluster a book divided into chunks using **Neo4j**. The used data file has been added to the repository, and no additional actions are required to load the file. The repo has both an executable script (.py) and jupyter notebook (.ipynb), so feel free to use whichever method suits you best.
 
-3. **Additional information** 
+3. **Additional information**  
 The original author's code to estimate the BERTopic model can be found [here](https://maartengr.github.io/BERTopic/getting_started/best_practices/best_practices.html). His [personal page](https://maartengr.github.io/BERTopic/index.html) contains various examples to estimate and use the BERTopic model, and it is recommended to explore his original work before continuing with the code presented in this repo. 
 
 
