@@ -98,14 +98,14 @@ chatbot.py:
 This script interacts with a Neo4j database using Langchain and Azure OpenAI. It is based on the example from the OpenAI Cookbook ([link](https://cookbook.openai.com/examples/rag_with_graph_db)), but has been updated to work with the latest version of Langchain. The data utilized in this script is stored in the `/data` directory, matching the dataset from the original cookbook example
 
 ## BERTopic
-1. Install the **BERTopic package**
-   The official BERTopic package is required to run the BERTopic file. The package can be installed by running:
+1. Install the **BERTopic package**  
+The official BERTopic package is required to run the BERTopic file. The package can be installed by running:
 
    ```bash
    pip install bertopic
    ```
    
-   Currently, installing the bertopic package does not include all necessary dependencies to run the package. The following packages need to be installed additional to the bertopic package to fully estimate the model:
+Currently, installing the bertopic package does not include all necessary dependencies to run the package. The following packages need to be installed additional to the bertopic package to fully estimate the model:
 
    ```bash
    pip install datasets
@@ -115,12 +115,12 @@ This script interacts with a Neo4j database using Langchain and Azure OpenAI. It
    pip install matplotlib
    ```
 
-   The recommended practice is to install these packages separately, since a single line install was found to lead to issues in one or more packages.
+The recommended practice is to install these packages separately, since a single line install was found to lead to issues in one or more packages.
 
-2. Estimating the **BERTopic model**
-   To estimate the BERTopic model, the original author's code has been adjusted to cluster a book divided into chunks using **Neo4j**. The used data file has been added to the repository, and no additional actions are required to load the file. The repo has both an executable script (.py) and jupyter notebook (.ipynb), so feel free to use whichever method suits you best.
+2. Estimating the **BERTopic model**  
+To estimate the BERTopic model, the original author's code has been adjusted to cluster a book divided into chunks using **Neo4j**. The used data file has been added to the repository, and no additional actions are required to load the file. The repo has both an executable script (.py) and jupyter notebook (.ipynb), so feel free to use whichever method suits you best.
 
-3. Additional information
-   The original author's code can be found here: https://maartengr.github.io/BERTopic/getting_started/best_practices/best_practices.html. His personal page contains various examples to estimate and use the BERTopic model, and it is recommended to explore his original work before continuing with the code presented in this repo. 
+3. Additional information  
+The original author's code can be found here: https://maartengr.github.io/BERTopic/getting_started/best_practices/best_practices.html. His personal page contains various examples to estimate and use the BERTopic model, and it is recommended to explore his original work before continuing with the code presented in this repo. 
 
 
